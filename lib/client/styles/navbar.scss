@@ -14,11 +14,49 @@
     vertical-align: top;
   }
 
-  .site-name {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--c-text);
-    position: relative;
+  .navbarBrand{
+    position: absolute;
+    top: var(--navbar-padding-v);
+    height: var(--navbar-line-height);
+    padding: 0 10px;
+    border-radius: 50px;
+    transition: background 0.2s ease-in;
+
+    .site-name {
+      font-size: 1.3rem;
+      font-weight: 600;
+      transform: scale(1);
+      color: var(--c-text);
+      position: relative;
+      display: inline-block;
+      transition: transform 0.2s ease-in;
+    }
+    .home-icon{
+      font-size: 1.3rem;
+      font-weight: 600;
+      transform: scale(0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      top: 0;
+      left: 0;
+      color: var(--c-text);
+      position: absolute;
+      transition: transform 0.2s ease-in;
+    }
+  }
+  .navbarBrand:hover{
+    background: var(--c-bg-hover-navbar);
+    .site-name{
+      color: #ffffff;
+      transform: scale(0);
+    }
+    .home-icon{
+      color: #ffffff;
+      transform: translateY(-37px);
+      transform: scale(1);
+    }
   }
 
   .navbar-items-wrapper {
@@ -26,12 +64,25 @@
     position: absolute;
     box-sizing: border-box;
     top: var(--navbar-padding-v);
-    right: var(--navbar-padding-h);
+    // right: var(--navbar-padding-h);
+    left: 50%;
+    transform: translateX(-50%);
     height: var(--navbar-line-height);
     padding-left: var(--navbar-padding-h);
+    padding-right: var(--navbar-padding-h);
     white-space: nowrap;
     font-size: 0.9rem;
+  }
 
+  .navbarTools{
+    display: flex;
+    position: absolute;
+    box-sizing: border-box;
+    top: var(--navbar-padding-v);
+    right: var(--navbar-padding-h);
+    height: var(--navbar-line-height);
+    white-space: nowrap;
+    font-size: 0.9rem;
     .search-box {
       flex: 0 0 auto;
       vertical-align: top;
@@ -43,12 +94,13 @@
   .navbar {
     padding-left: 4rem;
 
+  .navbarBrand{
     .site-name {
       display: block;
       // 5.5rem for .navbar padding-inline
       // 4.5rem for ColorModeSwitch and NavbarSearch
       // 1rem for gap
-      width: calc(100vw - 11rem);
+      // width: calc(100vw - 11rem);
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -57,6 +109,7 @@
     .can-hide {
       display: none;
     }
+    }
   }
 }
 
@@ -64,7 +117,8 @@
  * navbar-items
  */
 .navbar-items {
-  display: inline-block;
+  display: inline-flex;
+  align-items: flex-start;
 
   @media print {
     display: none;
@@ -72,30 +126,36 @@
 
   a {
     display: inline-block;
-    line-height: 1.4rem;
+    height: 100%;
     color: inherit;
+    padding: 0 15px;
+    background: none;
+    color: var(--c-text);
+    border-radius: 50px;
+    line-height: 30px;
 
-    &:hover,
-    &.router-link-active {
-      color: var(--c-text);
+    &:hover, &.router-link-active {
+      color: #fff;
     }
   }
 
+  // todo
   .navbar-item {
     position: relative;
     display: inline-block;
     margin-left: 1.5rem;
-    line-height: var(--navbar-line-height);
+    height: 30px;
 
     &:first-child {
       margin-left: 0;
     }
 
     > a {
-      &:hover,
-      &.router-link-active {
+      &:hover, &.router-link-active {
         margin-bottom: -2px;
-        border-bottom: 2px solid var(--c-text-accent);
+        background: var(--c-bg-hover-navbar);
+        transition: 0.35s ease-in-out;
+        color: #fff;
       }
     }
   }
@@ -103,12 +163,12 @@
 
 @media (max-width: $MQMobile) {
   .navbar-items {
+    // todo
     .navbar-item {
       margin-left: 0;
 
       > a {
-        &:hover,
-        &.router-link-active {
+        &:hover, &.router-link-active {
           margin-bottom: 0;
           border-bottom: none;
         }
@@ -116,8 +176,7 @@
     }
 
     a {
-      &:hover,
-      &.router-link-active {
+      &:hover, &.router-link-active {
         color: var(--c-text-accent);
       }
     }

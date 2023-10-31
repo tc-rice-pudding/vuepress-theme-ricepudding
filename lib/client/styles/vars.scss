@@ -3,17 +3,18 @@
   --c-brand: #3b70fc;
   --c-brand-light: #3b70fccf;
 
-  // background colors
+  // 背景色
   --c-bg: #ffffff;
   --c-bg-light: #f3f4f5;
   --c-bg-lighter: #eeeeee;
   --c-bg-dark: #ebebec;
   --c-bg-darker: #e6e6e6;
   --c-bg-navbar: var(--c-bg);
+  --c-bg-hover-navbar: #3b70fc;
   --c-bg-sidebar: var(--c-bg);
   --c-bg-arrow: #cccccc;
 
-  // text colors
+  // 文字颜色
   --c-text: #2c3e50;
   --c-text-accent: var(--c-brand);
   --c-text-light: #3a5169;
@@ -21,7 +22,7 @@
   --c-text-lightest: #6a8bad;
   --c-text-quote: #999999;
 
-  // border colors
+  // 边框颜色
   --c-border: #eaecef;
   --c-border-dark: #dfe2e5;
 

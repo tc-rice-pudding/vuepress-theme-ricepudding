@@ -1,3 +1,27 @@
+<template>
+  <header class="hero">
+    <HomeHeroImage />
+
+    <h1 v-if="heroText" id="main-title">
+      {{ heroText }}
+    </h1>
+
+    <p v-if="tagline" class="description">
+      {{ tagline }}
+    </p>
+
+    <p v-if="actions.length" class="actions">
+      <AutoLink
+        v-for="action in actions"
+        :key="action.text"
+        class="action-button"
+        :class="[action.type]"
+        :item="action"
+      />
+    </p>
+  </header>
+</template>
+
 <script setup lang="ts">
 import AutoLink from '@theme/AutoLink.vue'
 import {
@@ -72,27 +96,3 @@ const HomeHeroImage: FunctionalComponent = () => {
   return h(ClientOnly, () => img)
 }
 </script>
-
-<template>
-  <header class="hero">
-    <HomeHeroImage />
-
-    <h1 v-if="heroText" id="main-title">
-      {{ heroText }}
-    </h1>
-
-    <p v-if="tagline" class="description">
-      {{ tagline }}
-    </p>
-
-    <p v-if="actions.length" class="actions">
-      <AutoLink
-        v-for="action in actions"
-        :key="action.text"
-        class="action-button"
-        :class="[action.type]"
-        :item="action"
-      />
-    </p>
-  </header>
-</template>
